@@ -12,327 +12,841 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=8">
+<!-- Lenis Smooth Inertia Momentum Scroll Library -->
+<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
 <body>
+
+<!-- Ambient background mesh lighting with delayed parallax -->
+<div class="ambient-glow" aria-hidden="true">
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+</div>
+
+<!-- Floating Navigation Bar -->
 <header class="top">
     <div class="wrap top-inner">
-        <a href="#" class="brand"><img src="images/nexus-hub-logo.svg" alt="" width="28" height="28"> Nexus <span>App Suite</span></a>
+        <a href="#" class="brand">
+            <div class="brand-icon-wrap">
+                <img src="images/nexus-hub-logo.svg" alt="" width="22" height="22">
+            </div>
+            Nexus <span>App Suite</span>
+        </a>
         <nav aria-label="Sections">
-            <a href="#hub">NexusHub</a>
-            <a href="#inventory">NexusInventory</a>
-            <a href="#project">NexusProject</a>
-            <a href="#task">NexusTask</a>
-            <a href="#connected">How it connects</a>
-            <a href="#tech">Tech</a>
-            <a href="#contact" class="nav-cta">Contact</a>
+            <a href="#hub" class="nav-link">NexusHub</a>
+            <a href="#inventory" class="nav-link">NexusInventory</a>
+            <a href="#project" class="nav-link">NexusProject</a>
+            <a href="#task" class="nav-link">NexusTask</a>
+            <a href="#connected" class="nav-link">Architecture</a>
+            <a href="#tech" class="nav-link">Tech</a>
+            <a href="#contact" class="nav-cta">Contact Christian</a>
         </nav>
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+    </div>
+    <!-- Mobile dropdown navigation -->
+    <div id="mobile-nav" class="mobile-nav wrap">
+        <a href="#hub">NexusHub</a>
+        <a href="#inventory">NexusInventory</a>
+        <a href="#project">NexusProject</a>
+        <a href="#task">NexusTask</a>
+        <a href="#connected">Architecture</a>
+        <a href="#tech">Tech</a>
+        <a href="#contact">Contact Christian</a>
     </div>
 </header>
 
+<!-- Vertical Section Navigation Dots (.....) -->
+<nav class="scroll-dots" aria-label="Section dots navigation">
+    <a href="#hero" class="dot active" data-section="hero" aria-label="Top / Hero section">
+        <span class="dot-indicator"></span>
+        <span class="dot-label">Top</span>
+    </a>
+    <a href="#hub" class="dot" data-section="hub" aria-label="NexusHub section">
+        <span class="dot-indicator"></span>
+        <span class="dot-label">NexusHub</span>
+    </a>
+    <a href="#inventory" class="dot" data-section="inventory" aria-label="NexusInventory section">
+        <span class="dot-indicator"></span>
+        <span class="dot-label">NexusInventory</span>
+    </a>
+    <a href="#project" class="dot" data-section="project" aria-label="NexusProject section">
+        <span class="dot-indicator"></span>
+        <span class="dot-label">NexusProject</span>
+    </a>
+    <a href="#task" class="dot" data-section="task" aria-label="NexusTask section">
+        <span class="dot-indicator"></span>
+        <span class="dot-label">NexusTask</span>
+    </a>
+    <a href="#connected" class="dot" data-section="connected" aria-label="Architecture section">
+        <span class="dot-indicator"></span>
+        <span class="dot-label">Architecture</span>
+    </a>
+    <a href="#tech" class="dot" data-section="tech" aria-label="Engineering & Quality section">
+        <span class="dot-indicator"></span>
+        <span class="dot-label">Tech & Quality</span>
+    </a>
+    <a href="#contact" class="dot" data-section="contact" aria-label="Contact section">
+        <span class="dot-indicator"></span>
+        <span class="dot-label">Contact</span>
+    </a>
+</nav>
+
 <main>
-    <section class="hero">
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
         <div class="wrap hero-grid">
-            <div>
-                <p class="eyebrow">Portfolio · Christian Sevilleno, freelance developer</p>
-                <h1>HR, IT and project work, <em>connected</em>.</h1>
-                <p class="lead">The Nexus app suite replaces paper forms, chat approvals and spreadsheets with web apps that share one company sign-in. It's built for Philippine companies, with statutory leave, RA 10173 privacy controls and Manila time.</p>
+            <div class="reveal">
+                <div class="hero-badge">
+                    <span class="status-dot"></span>
+                    <span>Portfolio</span>
+                    <span class="hero-badge-tag">Christian Sevilleno, freelance developer</span>
+                </div>
+                <h1 class="gradient-text">HR, IT and project work, <span class="gradient-highlight">fluidly connected</span>.</h1>
+                <p class="lead">The Nexus app suite replaces paper forms, chat approvals and spreadsheets with web apps that share one company sign-in. Built for Philippine companies, with statutory leave, RA 10173 privacy controls and Manila time.</p>
+                
                 <div class="hero-apps">
-                    <a href="#hub" class="app-chip hub"><img src="images/nexus-hub-logo.svg" alt="" width="40" height="40"><span><strong><b>Nexus</b>Hub</strong>Employee platform &amp; sign-in</span></a>
-                    <a href="#inventory" class="app-chip inv"><img src="images/nexus-inventory-icon.png" alt="" width="40" height="40"><span><strong>Nexus<b>Inventory</b></strong>IT asset inventory</span></a>
-                    <a href="#project" class="app-chip proj"><img src="images/nexus-project-logo.svg" alt="" width="40" height="40"><span><strong>Nexus<b>Project</b></strong>Projects &amp; milestones</span></a>
-                    <a href="#task" class="app-chip task"><img src="images/nexus-task-logo.svg" alt="" width="40" height="40"><span><strong>Nexus<b>Task</b></strong>Tasks, lists &amp; boards</span></a>
+                    <a href="#hub" class="app-chip hub">
+                        <img src="images/nexus-hub-logo.svg" alt="" width="36" height="36">
+                        <span><strong><b>Nexus</b>Hub</strong>Employee platform &amp; sign-in</span>
+                    </a>
+                    <a href="#inventory" class="app-chip inv">
+                        <img src="images/nexus-inventory-icon.png" alt="" width="36" height="36">
+                        <span><strong>Nexus<b>Inventory</b></strong>IT asset inventory</span>
+                    </a>
+                    <a href="#project" class="app-chip proj">
+                        <img src="images/nexus-project-logo.svg" alt="" width="36" height="36">
+                        <span><strong>Nexus<b>Project</b></strong>Projects &amp; milestones</span>
+                    </a>
+                    <a href="#task" class="app-chip task">
+                        <img src="images/nexus-task-logo.svg" alt="" width="36" height="36">
+                        <span><strong>Nexus<b>Task</b></strong>Tasks, lists &amp; boards</span>
+                    </a>
                 </div>
             </div>
-            <figure class="hero-shot">
-                <button class="shot" data-full="images/hub-home.jpg?v=3" aria-label="Enlarge: NexusHub home page"><img src="images/hub-home.jpg?v=3" alt="NexusHub home page with tasks, leave balances and quick links" width="1440" height="900"></button>
-            </figure>
+
+            <!-- Hero Perspective Screenshot with delayed parallax -->
+            <div class="hero-shot-container reveal delay-1">
+                <div class="hero-shot-frame shot" data-full="images/hub-home.jpg?v=3" data-caption="NexusHub home page with tasks, leave balances and quick links" aria-label="Enlarge: NexusHub home page">
+                    <div class="browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="browser-url">https://hub.nexus-suite.internal/home</div>
+                        <div style="width: 36px"></div>
+                    </div>
+                    <img src="images/hub-home.jpg?v=3" alt="NexusHub home page with tasks, leave balances and quick links" width="1440" height="900">
+                </div>
+            </div>
         </div>
+
+        <!-- Animated Stats Counter Strip with Staggered Delays -->
         <div class="wrap stats">
-            <div><strong>4</strong><span>connected apps + a shared client kit</span></div>
-            <div><strong>1,400+</strong><span>automated tests across the suite</span></div>
-            <div><strong>OIDC</strong><span>one sign-in, with two-factor</span></div>
-            <div><strong>RA 10173</strong><span>privacy built in, not bolted on</span></div>
+            <div class="stat-card reveal delay-1">
+                <strong><span class="stat-count" data-target="4">4</span></strong>
+                <span>connected apps + a shared client kit</span>
+            </div>
+            <div class="stat-card reveal delay-2">
+                <strong><span class="stat-count" data-target="1400" data-suffix="+">1,400+</span></strong>
+                <span>automated tests across the suite</span>
+            </div>
+            <div class="stat-card reveal delay-3">
+                <strong style="color: var(--hub);">OIDC</strong>
+                <span>one sign-in with two-factor</span>
+            </div>
+            <div class="stat-card reveal delay-4">
+                <strong style="color: var(--task);">RA 10173</strong>
+                <span>privacy built in, not bolted on</span>
+            </div>
         </div>
     </section>
 
+    <!-- Layered 3D Showcase: tilted screenshot panels that drift with scroll and drag -->
+    <section class="image-marquee-section reveal">
+        <div class="wrap marquee-header">
+            <div class="marquee-title-wrap">
+                <span class="eyebrow hub-text">Live Suite Showcase</span>
+                <h2>Connected across every team</h2>
+                <p>Every screen of the suite, layered in depth. The stack drifts with your scroll; drag it to scrub, click any panel to enlarge.</p>
+            </div>
+            <div class="marquee-controls-hint">
+                <span>Drag or scroll to scrub</span>
+            </div>
+        </div>
+
+        <div class="marquee-wrapper" id="marquee-wrapper">
+            <div class="marquee-track" id="marquee-track">
+                <!-- Card 1: Hub Feed -->
+                <div class="marquee-card shot" data-full="images/hub-feed.jpg?v=3" data-caption="NexusHub · Company Feed with announcements & read receipts">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/hub-feed.jpg?v=3" alt="NexusHub Company Feed" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge hub-badge">NexusHub</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Company Feed &amp; News</strong>
+                        <span>Pinned posts, read confirmations &amp; moderation</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Inventory Server -->
+                <div class="marquee-card shot" data-full="images/inv-server.jpg?v=3" data-caption="NexusInventory · Server Specs & Hardware Parts">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/inv-server.jpg?v=3" alt="NexusInventory Server Specs" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge inv-badge">NexusInventory</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Server Specs &amp; Parts</strong>
+                        <span>Hardware components &amp; dynamic specs computation</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Project Progress -->
+                <div class="marquee-card shot" data-full="images/proj-project.jpg?v=3" data-caption="NexusProject · Real-time Milestone Progress">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/proj-project.jpg?v=3" alt="NexusProject Milestone Progress" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge proj-badge">NexusProject</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Live Delivery Milestones</strong>
+                        <span>Synced automatically with tasks in NexusTask</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Task Board -->
+                <div class="marquee-card shot" data-full="images/task-board.jpg?v=3" data-caption="NexusTask · Team Kanban Board">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/task-board.jpg?v=3" alt="NexusTask Team Board" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge task-badge">NexusTask</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Team Kanban Board</strong>
+                        <span>Drag tasks across columns with status workflow</span>
+                    </div>
+                </div>
+
+                <!-- Card 5: Hub Form Builder -->
+                <div class="marquee-card shot" data-full="images/hub-form-builder.jpg?v=3" data-caption="NexusHub · Request Form Builder & Verifiable QR PDF">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/hub-form-builder.jpg?v=3" alt="NexusHub Form Builder" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge hub-badge">NexusHub</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Request Form Builder</strong>
+                        <span>Drag &amp; drop fields, versions &amp; PDF generation</span>
+                    </div>
+                </div>
+
+                <!-- Card 6: Inventory Laptop -->
+                <div class="marquee-card shot" data-full="images/inv-laptop.jpg?v=3" data-caption="NexusInventory · IT Asset QR Checkout">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/inv-laptop.jpg?v=3" alt="NexusInventory Laptop Asset" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge inv-badge">NexusInventory</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>QR Asset Assignment</strong>
+                        <span>Holder acknowledgment, history &amp; Zebra printing</span>
+                    </div>
+                </div>
+
+                <!-- Card 7: Task Today Ring -->
+                <div class="marquee-card shot" data-full="images/task-today.jpg?v=3" data-caption="NexusTask · Daily Execution Ring">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/task-today.jpg?v=3" alt="NexusTask Today Page" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge task-badge">NexusTask</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Today &amp; Progress Ring</strong>
+                        <span>Focused execution and daily completion tracking</span>
+                    </div>
+                </div>
+
+                <!-- Card 8: Project Overview -->
+                <div class="marquee-card shot" data-full="images/proj-overview.jpg?v=3" data-caption="NexusProject · Executive Portfolio Overview">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/proj-overview.jpg?v=3" alt="NexusProject Overview" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge proj-badge">NexusProject</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Executive Dashboard</strong>
+                        <span>Milestones at risk, overdue tasks &amp; health stats</span>
+                    </div>
+                </div>
+
+                <!-- Card 9: Hub Leave -->
+                <div class="marquee-card shot" data-full="images/hub-my-leave.jpg?v=3" data-caption="NexusHub · Statutory Leave Balances">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/hub-my-leave.jpg?v=3" alt="NexusHub Leave Page" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge hub-badge">NexusHub</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Philippine Statutory Leave</strong>
+                        <span>Accrual rules, team calendar &amp; payroll export</span>
+                    </div>
+                </div>
+
+                <!-- Card 10: Task Calendar -->
+                <div class="marquee-card shot" data-full="images/task-calendar.jpg?v=3" data-caption="NexusTask · Drag-and-Drop Task Calendar">
+                    <div class="marquee-card-img-wrap">
+                        <img src="images/task-calendar.jpg?v=3" alt="NexusTask Calendar" loading="lazy" width="720" height="450">
+                        <span class="marquee-badge task-badge">NexusTask</span>
+                    </div>
+                    <div class="marquee-card-meta">
+                        <strong>Interactive Calendar</strong>
+                        <span>Month and week scheduling with drag-and-drop</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NexusHub App Section -->
     <section id="hub" class="app-section">
         <div class="wrap">
-            <div class="section-head">
-                <img src="images/nexus-hub-logo.svg" alt="" width="48" height="48">
+            <div class="section-head reveal">
+                <div class="app-icon-badge">
+                    <img src="images/nexus-hub-logo.svg" alt="NexusHub Logo" width="40" height="40">
+                </div>
                 <div>
-                    <p class="eyebrow hub-text">The core app</p>
+                    <p class="eyebrow hub-text">The core identity &amp; platform</p>
                     <h2><span class="hub-text">Nexus</span>Hub</h2>
                     <p>The company's employee platform and sign-in provider: records, leave, requests, onboarding and news in one place, plus the identity every other app trusts.</p>
                 </div>
             </div>
 
+            <!-- Interactive Spotlight Console with Delayed Entrance -->
+            <div class="console-box reveal delay-1">
+                <div class="console-grid">
+                    <div class="console-tabs" role="tablist" aria-label="NexusHub Interactive Previews">
+                        <button class="console-tab active" role="tab" aria-selected="true" data-shot="images/hub-feed.jpg?v=3" data-caption="Company feed with a 'Please read' announcement, posts and likes">
+                            <strong>Company Feed</strong>
+                            <span>Announcements, photos, mentions, read confirmations &amp; moderation.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/hub-my-leave.jpg?v=3" data-caption="My leave page with Philippine statutory leave balances and requests">
+                            <strong>Leave Balances &amp; Calendar</strong>
+                            <span>Statutory leave rules, monthly accrual, carry-over, team calendar &amp; payroll export.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/hub-approvals.jpg?v=3" data-caption="Approvals inbox with step-by-step manager flows">
+                            <strong>Approvals Inbox</strong>
+                            <span>Step-by-step delegation, reminders after 2 working days &amp; escalation after 5.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/hub-form-builder.jpg?v=3" data-caption="Drag-and-drop request form builder with PDF certificate generation">
+                            <strong>Request Form Builder</strong>
+                            <span>Drag-and-drop form builder, versions, drawn signatures &amp; verifiable QR codes.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/hub-onboarding-case.jpg?v=3" data-caption="Onboarding case with milestone tasks and requirements">
+                            <strong>Onboarding &amp; Offboarding</strong>
+                            <span>Pre-hire portal, checklist timelines, probation alerts &amp; exit clearance.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/hub-employees.jpg?v=3" data-caption="Employee records for HR with encrypted government IDs">
+                            <strong>Employee Directory &amp; Org Chart</strong>
+                            <span>Four privacy tiers, encrypted sensitive government IDs &amp; confidential access audit logs.</span>
+                        </button>
+                    </div>
+
+                    <div class="console-preview-wrap">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="browser-url">hub.nexus-suite.internal · live showcase</div>
+                            <div class="zoom-hint">Click to enlarge ⤢</div>
+                        </div>
+                        <div class="console-preview-screen">
+                            <button class="shot" data-full="images/hub-feed.jpg?v=3" data-caption="Company feed with a 'Please read' announcement, posts and likes" aria-label="Enlarge preview">
+                                <img class="console-preview-img" src="images/hub-feed.jpg?v=3" alt="Company feed with a 'Please read' announcement" width="1440" height="900">
+                            </button>
+                        </div>
+                        <div class="console-preview-caption">
+                            <span class="console-preview-caption-text">Company feed with a "Please read" announcement, posts and likes</span>
+                            <span class="zoom-hint">Interactive Console</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid with Staggered Delays -->
             <div class="features">
-                <article>
+                <article class="feature-card reveal delay-1">
                     <h3>Employee records</h3>
                     <p>Personal data is split into four privacy levels (public, employment, confidential and sensitive). Government IDs are encrypted and every confidential view is logged. Includes CSV import, an org chart and a directory.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-2">
                     <h3>Leave</h3>
                     <p>Philippine statutory leave types, balances earned monthly or yearly, service-year steps, carry-over and conversion, a team calendar, iCal feeds and figures for payroll.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-3">
                     <h3>Request forms</h3>
                     <p>A drag-and-drop form builder with versions and approval flows. Certificates are generated as PDFs with a letterhead, drawn signatures and a QR code anyone can verify.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-4">
                     <h3>Approvals engine</h3>
                     <p>Step-by-step flows (manager, role or person), delegation while away, reminders after two working days and escalation after five. Other apps can use it too.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-1">
                     <h3>Onboarding &amp; offboarding</h3>
                     <p>Checklist templates on a timeline, a pre-hire portal for uploading requirements, probation reminders, clearance sign-offs and exit interviews.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-2">
                     <h3>Company feed</h3>
                     <p>Posts, photos, mentions and likes. Announcements can be pinned and ask people to confirm they've read them. Includes moderation, birthdays and work anniversaries.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-3">
                     <h3>Roles from permissions</h3>
                     <p>HR builds roles by choosing an access level for each module. Nobody can grant more access than they hold, and two-factor sign-in is required for every role.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-4">
                     <h3>Sign-in for every app</h3>
                     <p>An OpenID Connect provider with PKCE and consent. Signing out in one app signs you out of the others (back-channel logout), and you can see and remove connected apps.</p>
                 </article>
             </div>
 
+            <!-- All App Views Gallery -->
+            <div class="gallery-section-title reveal">
+                <h3>All NexusHub Views &amp; Workflows</h3>
+                <span class="gallery-count">10 screens</span>
+            </div>
             <div class="gallery">
-                <figure><button class="shot" data-full="images/hub-feed.jpg?v=3"><img src="images/hub-feed.jpg?v=3" alt="Company feed with a pinned announcement, posts and likes" loading="lazy" width="1440" height="900"></button><figcaption>Company feed with a "Please read" announcement</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-my-leave.jpg?v=3"><img src="images/hub-my-leave.jpg?v=3" alt="My leave page with balances and requests" loading="lazy" width="1440" height="900"></button><figcaption>My leave: balances and requests</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-approvals.jpg?v=3"><img src="images/hub-approvals.jpg?v=3" alt="Approvals inbox with leave requests" loading="lazy" width="1440" height="900"></button><figcaption>Approvals inbox</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-form-builder.jpg?v=3"><img src="images/hub-form-builder.jpg?v=3" alt="Request form builder" loading="lazy" width="1440" height="900"></button><figcaption>Request form builder</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-requests.jpg?v=3"><img src="images/hub-requests.jpg?v=3" alt="Requests employees can file" loading="lazy" width="1440" height="900"></button><figcaption>Self-service requests</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-onboarding-case.jpg?v=3"><img src="images/hub-onboarding-case.jpg?v=3" alt="Onboarding case with tasks and requirements" loading="lazy" width="1440" height="900"></button><figcaption>An onboarding case: tasks, owners and requirements</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-checklist-editor.jpg?v=3"><img src="images/hub-checklist-editor.jpg?v=3" alt="Checklist template editor" loading="lazy" width="1440" height="900"></button><figcaption>Checklist editor with due dates from the start date</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-employees.jpg?v=3"><img src="images/hub-employees.jpg?v=3" alt="Employee list for HR" loading="lazy" width="1440" height="900"></button><figcaption>Employee records for HR</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-roles.jpg?v=3"><img src="images/hub-roles.jpg?v=3" alt="Role editor with access level per module" loading="lazy" width="1440" height="900"></button><figcaption>Roles: an access level for each module</figcaption></figure>
-                <figure><button class="shot" data-full="images/hub-org-chart.jpg?v=3"><img src="images/hub-org-chart.jpg?v=3" alt="Org chart" loading="lazy" width="1440" height="900"></button><figcaption>Org chart</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/hub-feed.jpg?v=3" data-caption="Company feed with a 'Please read' announcement"><img src="images/hub-feed.jpg?v=3" alt="Company feed with a pinned announcement, posts and likes" loading="lazy" width="1440" height="900"></button><figcaption>Company feed with a "Please read" announcement</figcaption></figure>
+                <figure class="reveal delay-2"><button class="shot" data-full="images/hub-my-leave.jpg?v=3" data-caption="My leave: balances and requests"><img src="images/hub-my-leave.jpg?v=3" alt="My leave page with balances and requests" loading="lazy" width="1440" height="900"></button><figcaption>My leave: balances and requests</figcaption></figure>
+                <figure class="reveal delay-3"><button class="shot" data-full="images/hub-approvals.jpg?v=3" data-caption="Approvals inbox"><img src="images/hub-approvals.jpg?v=3" alt="Approvals inbox with leave requests" loading="lazy" width="1440" height="900"></button><figcaption>Approvals inbox</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/hub-form-builder.jpg?v=3" data-caption="Request form builder"><img src="images/hub-form-builder.jpg?v=3" alt="Request form builder" loading="lazy" width="1440" height="900"></button><figcaption>Request form builder</figcaption></figure>
+                <figure class="reveal delay-2"><button class="shot" data-full="images/hub-requests.jpg?v=3" data-caption="Self-service requests"><img src="images/hub-requests.jpg?v=3" alt="Requests employees can file" loading="lazy" width="1440" height="900"></button><figcaption>Self-service requests</figcaption></figure>
+                <figure class="reveal delay-3"><button class="shot" data-full="images/hub-onboarding-case.jpg?v=3" data-caption="An onboarding case: tasks, owners and requirements"><img src="images/hub-onboarding-case.jpg?v=3" alt="Onboarding case with tasks and requirements" loading="lazy" width="1440" height="900"></button><figcaption>An onboarding case: tasks, owners and requirements</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/hub-checklist-editor.jpg?v=3" data-caption="Checklist editor with due dates from the start date"><img src="images/hub-checklist-editor.jpg?v=3" alt="Checklist template editor" loading="lazy" width="1440" height="900"></button><figcaption>Checklist editor with due dates from the start date</figcaption></figure>
+                <figure class="reveal delay-2"><button class="shot" data-full="images/hub-employees.jpg?v=3" data-caption="Employee records for HR"><img src="images/hub-employees.jpg?v=3" alt="Employee list for HR" loading="lazy" width="1440" height="900"></button><figcaption>Employee records for HR</figcaption></figure>
+                <figure class="reveal delay-3"><button class="shot" data-full="images/hub-roles.jpg?v=3" data-caption="Roles: an access level for each module"><img src="images/hub-roles.jpg?v=3" alt="Role editor with access level per module" loading="lazy" width="1440" height="900"></button><figcaption>Roles: an access level for each module</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/hub-org-chart.jpg?v=3" data-caption="Org chart"><img src="images/hub-org-chart.jpg?v=3" alt="Org chart" loading="lazy" width="1440" height="900"></button><figcaption>Org chart</figcaption></figure>
             </div>
         </div>
     </section>
 
-    <section id="inventory" class="app-section alt">
+    <!-- NexusInventory App Section -->
+    <section id="inventory" class="app-section">
         <div class="wrap">
-            <div class="section-head">
-                <img src="images/nexus-inventory-icon.png" alt="" width="48" height="48">
+            <div class="section-head reveal">
+                <div class="app-icon-badge">
+                    <img src="images/nexus-inventory-icon.png" alt="NexusInventory Icon" width="40" height="40">
+                </div>
                 <div>
-                    <p class="eyebrow inv-text">The first connected app</p>
+                    <p class="eyebrow inv-text">The connected hardware asset tracker</p>
                     <h2>Nexus<span class="inv-text">Inventory</span></h2>
                     <p>IT asset inventory across sites: what you own, where it is, who holds it and what it's made of. Employees sign in through the Hub, and the employee list stays in sync with the Hub automatically.</p>
                 </div>
             </div>
 
+            <!-- Interactive Spotlight Console with Delayed Entrance -->
+            <div class="console-box reveal delay-1">
+                <div class="console-grid">
+                    <div class="console-tabs" role="tablist" aria-label="NexusInventory Interactive Previews">
+                        <button class="console-tab active" role="tab" aria-selected="true" data-shot="images/inv-server.jpg?v=3" data-caption="A server's specs, computed dynamically from installed components">
+                            <strong>Server Specs &amp; Components</strong>
+                            <span>Specs computed from parts installed: RAM, drives, CPUs &amp; slot configurations.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/inv-laptop.jpg?v=3" data-caption="Asset page: holder, purchase details and QR label">
+                            <strong>Assign &amp; QR Labeling</strong>
+                            <span>Assignment records, holder acknowledgment, and printable Zebra QR codes.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/inv-assets.jpg?v=3" data-caption="Asset list with multi-site filters and bulk actions">
+                            <strong>Multi-Site Asset Registry</strong>
+                            <span>Comprehensive filterable list with bulk actions, statuses, and serial numbers.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/inv-dashboard.jpg?v=3" data-caption="Inventory dashboard with site breakdown">
+                            <strong>Site Dashboards</strong>
+                            <span>Real-time asset allocations, unassigned spares, warranties &amp; site summaries.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/inv-purchase-orders.jpg?v=3" data-caption="Purchase orders and receiving straight into stock">
+                            <strong>Purchase Orders &amp; Receiving</strong>
+                            <span>Approval flow by another site admin, document attachments, and receiving directly into stock.</span>
+                        </button>
+                    </div>
+
+                    <div class="console-preview-wrap">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="browser-url">inv.nexus-suite.internal · asset console</div>
+                            <div class="zoom-hint">Click to enlarge ⤢</div>
+                        </div>
+                        <div class="console-preview-screen">
+                            <button class="shot" data-full="images/inv-server.jpg?v=3" data-caption="A server's specs, computed dynamically from installed components" aria-label="Enlarge preview">
+                                <img class="console-preview-img" src="images/inv-server.jpg?v=3" alt="A server's specs, worked out from its parts" width="1440" height="900">
+                            </button>
+                        </div>
+                        <div class="console-preview-caption">
+                            <span class="console-preview-caption-text">A server's specs, worked out from its parts</span>
+                            <span class="zoom-hint">Interactive Console</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid with Staggered Delays -->
             <div class="features">
-                <article>
+                <article class="feature-card reveal delay-1">
                     <h3>Assets &amp; components</h3>
                     <p>Laptops, servers, network gear, point-of-sale devices and parts. Each asset type has its own specs, and a server's specs are worked out from the parts installed in it.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-2">
                     <h3>Assign &amp; acknowledge</h3>
                     <p>Assign and check out equipment, then return it. The holder acknowledges what they received, and every change is kept in the asset's history.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-3">
                     <h3>QR labels &amp; scanning</h3>
                     <p>Print labels as PDF or for Zebra printers, scan them with a phone camera, and reissue a code if a label is lost. Large print batches run in the background.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-1">
                     <h3>Purchase orders</h3>
                     <p>Draft, approve (by a different site admin), order, then receive straight into stock, with documents attached.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-2">
                     <h3>Sites &amp; locations</h3>
                     <p>Sites, floors, rooms and storage areas, with access limited to each person's site.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-3">
                     <h3>Offboarding clearance</h3>
                     <p>When someone resigns, the Hub's checklist asks NexusInventory what they still hold, and the clearance task signs off by itself once everything is returned.</p>
                 </article>
             </div>
 
+            <!-- All App Views Gallery -->
+            <div class="gallery-section-title reveal">
+                <h3>All NexusInventory Views &amp; Workflows</h3>
+                <span class="gallery-count">7 screens</span>
+            </div>
             <div class="gallery">
-                <figure><button class="shot" data-full="images/inv-server.jpg?v=3"><img src="images/inv-server.jpg?v=3" alt="Server asset page with specs computed from installed parts" loading="lazy" width="1440" height="900"></button><figcaption>A server's specs, worked out from its parts</figcaption></figure>
-                <figure><button class="shot" data-full="images/inv-laptop.jpg?v=3"><img src="images/inv-laptop.jpg?v=3" alt="Laptop asset page with holder and QR label" loading="lazy" width="1440" height="900"></button><figcaption>Asset page: holder, purchase details and QR label</figcaption></figure>
-                <figure><button class="shot" data-full="images/inv-assets.jpg?v=3"><img src="images/inv-assets.jpg?v=3" alt="Asset list with filters" loading="lazy" width="1440" height="900"></button><figcaption>Asset list with filters and bulk actions</figcaption></figure>
-                <figure><button class="shot" data-full="images/inv-dashboard.jpg?v=3"><img src="images/inv-dashboard.jpg?v=3" alt="Inventory dashboard" loading="lazy" width="1440" height="900"></button><figcaption>Dashboard for each site</figcaption></figure>
-                <figure><button class="shot" data-full="images/inv-purchase-orders.jpg?v=3"><img src="images/inv-purchase-orders.jpg?v=3" alt="Purchase orders" loading="lazy" width="1440" height="900"></button><figcaption>Purchase orders and receiving</figcaption></figure>
-                <figure><button class="shot" data-full="images/inv-locations.jpg?v=3"><img src="images/inv-locations.jpg?v=3" alt="Locations tree" loading="lazy" width="1440" height="900"></button><figcaption>Sites, floors and rooms</figcaption></figure>
-                <figure><button class="shot" data-full="images/inv-employees.jpg?v=3"><img src="images/inv-employees.jpg?v=3" alt="Employees synced from the Hub" loading="lazy" width="1440" height="900"></button><figcaption>Employees synced from the Hub, with site roles</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/inv-server.jpg?v=3" data-caption="A server's specs, worked out from its parts"><img src="images/inv-server.jpg?v=3" alt="Server asset page with specs computed from installed parts" loading="lazy" width="1440" height="900"></button><figcaption>A server's specs, worked out from its parts</figcaption></figure>
+                <figure class="reveal delay-2"><button class="shot" data-full="images/inv-laptop.jpg?v=3" data-caption="Asset page: holder, purchase details and QR label"><img src="images/inv-laptop.jpg?v=3" alt="Laptop asset page with holder and QR label" loading="lazy" width="1440" height="900"></button><figcaption>Asset page: holder, purchase details and QR label</figcaption></figure>
+                <figure class="reveal delay-3"><button class="shot" data-full="images/inv-assets.jpg?v=3" data-caption="Asset list with filters and bulk actions"><img src="images/inv-assets.jpg?v=3" alt="Asset list with filters" loading="lazy" width="1440" height="900"></button><figcaption>Asset list with filters and bulk actions</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/inv-dashboard.jpg?v=3" data-caption="Dashboard for each site"><img src="images/inv-dashboard.jpg?v=3" alt="Inventory dashboard" loading="lazy" width="1440" height="900"></button><figcaption>Dashboard for each site</figcaption></figure>
+                <figure class="reveal delay-2"><button class="shot" data-full="images/inv-purchase-orders.jpg?v=3" data-caption="Purchase orders and receiving"><img src="images/inv-purchase-orders.jpg?v=3" alt="Purchase orders" loading="lazy" width="1440" height="900"></button><figcaption>Purchase orders and receiving</figcaption></figure>
+                <figure class="reveal delay-3"><button class="shot" data-full="images/inv-locations.jpg?v=3" data-caption="Sites, floors and rooms"><img src="images/inv-locations.jpg?v=3" alt="Locations tree" loading="lazy" width="1440" height="900"></button><figcaption>Sites, floors and rooms</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/inv-employees.jpg?v=3" data-caption="Employees synced from the Hub, with site roles"><img src="images/inv-employees.jpg?v=3" alt="Employees synced from the Hub" loading="lazy" width="1440" height="900"></button><figcaption>Employees synced from the Hub, with site roles</figcaption></figure>
             </div>
         </div>
     </section>
 
+    <!-- NexusProject App Section -->
     <section id="project" class="app-section">
         <div class="wrap">
-            <div class="section-head">
-                <img src="images/nexus-project-logo.svg" alt="" width="48" height="48">
+            <div class="section-head reveal">
+                <div class="app-icon-badge">
+                    <img src="images/nexus-project-logo.svg" alt="NexusProject Logo" width="40" height="40">
+                </div>
                 <div>
-                    <p class="eyebrow proj-text">Project management</p>
+                    <p class="eyebrow proj-text">Precision delivery management</p>
                     <h2>Nexus<span class="proj-text">Project</span></h2>
                     <p>Projects, their teams and milestones, with progress that comes from the real work in NexusTask instead of someone's estimate. Status movement, an on-time or late timetable and delivery reports come next.</p>
                 </div>
             </div>
 
+            <!-- Interactive Spotlight Console with Delayed Entrance -->
+            <div class="console-box reveal delay-1">
+                <div class="console-grid">
+                    <div class="console-tabs" role="tablist" aria-label="NexusProject Interactive Previews">
+                        <button class="console-tab active" role="tab" aria-selected="true" data-shot="images/proj-project.jpg?v=3" data-caption="A project: progress from its tasks, milestones and details">
+                            <strong>Live Project Progress</strong>
+                            <span>Percentage completed, open tasks and milestone tracking synced live from NexusTask.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/proj-overview.jpg?v=3" data-caption="Overview: milestones at risk and overdue tasks">
+                            <strong>Executive Overview</strong>
+                            <span>Active projects, overdue deadlines, and milestones at risk on one executive dashboard.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/proj-projects.jpg?v=3" data-caption="Projects with status, priority, lead and due date">
+                            <strong>Portfolio Registry</strong>
+                            <span>Searchable project index with priority codes, team leads, and strict member permissions.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/proj-milestones.jpg?v=3" data-caption="Milestones in delivery order">
+                            <strong>Delivery Milestones</strong>
+                            <span>Sequential milestones with due dates, linked tasks, and automated completion triggers.</span>
+                        </button>
+                    </div>
+
+                    <div class="console-preview-wrap">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="browser-url">project.nexus-suite.internal · project view</div>
+                            <div class="zoom-hint">Click to enlarge ⤢</div>
+                        </div>
+                        <div class="console-preview-screen">
+                            <button class="shot" data-full="images/proj-project.jpg?v=3" data-caption="A project: progress from its tasks, milestones and details" aria-label="Enlarge preview">
+                                <img class="console-preview-img" src="images/proj-project.jpg?v=3" alt="A project: progress from its tasks, milestones and details" width="1440" height="900">
+                            </button>
+                        </div>
+                        <div class="console-preview-caption">
+                            <span class="console-preview-caption-text">A project: progress from its tasks, milestones and details</span>
+                            <span class="zoom-hint">Interactive Console</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid with Staggered Delays -->
             <div class="features">
-                <article>
+                <article class="feature-card reveal delay-1">
                     <h3>Projects &amp; teams</h3>
                     <p>Each project has a code, status, priority, lead and dates. Members get a project role, and a project is visible only to its members and project admins.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-2">
                     <h3>Milestones</h3>
                     <p>Delivery points in order, each with a due date and status. Tasks in NexusTask are filed under the open ones.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-3">
                     <h3>Progress from NexusTask</h3>
                     <p>Tasks stay in NexusTask. NexusProject keeps a copy from NexusTask's task events, so the percentage done and the done, in progress and to do counts are always current.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-4">
                     <h3>Overview</h3>
                     <p>Active projects, your projects, milestones at risk and overdue tasks on one page, with recent projects and their progress below.</p>
                 </article>
             </div>
 
+            <!-- All App Views Gallery -->
+            <div class="gallery-section-title reveal">
+                <h3>All NexusProject Views &amp; Workflows</h3>
+                <span class="gallery-count">4 screens</span>
+            </div>
             <div class="gallery">
-                <figure><button class="shot" data-full="images/proj-project.jpg?v=3"><img src="images/proj-project.jpg?v=3" alt="Project page with progress, milestones and project details" loading="lazy" width="1440" height="900"></button><figcaption>A project: progress from its tasks, milestones and details</figcaption></figure>
-                <figure><button class="shot" data-full="images/proj-overview.jpg?v=3"><img src="images/proj-overview.jpg?v=3" alt="Overview with project counts and recent projects" loading="lazy" width="1440" height="900"></button><figcaption>Overview: milestones at risk and overdue tasks</figcaption></figure>
-                <figure><button class="shot" data-full="images/proj-projects.jpg?v=3"><img src="images/proj-projects.jpg?v=3" alt="Project list with status, priority, lead and due date" loading="lazy" width="1440" height="900"></button><figcaption>Projects with status, priority, lead and due date</figcaption></figure>
-                <figure><button class="shot" data-full="images/proj-milestones.jpg?v=3"><img src="images/proj-milestones.jpg?v=3" alt="Milestones of a project with due date and progress" loading="lazy" width="1440" height="900"></button><figcaption>Milestones in delivery order</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/proj-project.jpg?v=3" data-caption="A project: progress from its tasks, milestones and details"><img src="images/proj-project.jpg?v=3" alt="Project page with progress, milestones and project details" loading="lazy" width="1440" height="900"></button><figcaption>A project: progress from its tasks, milestones and details</figcaption></figure>
+                <figure class="reveal delay-2"><button class="shot" data-full="images/proj-overview.jpg?v=3" data-caption="Overview: milestones at risk and overdue tasks"><img src="images/proj-overview.jpg?v=3" alt="Overview with project counts and recent projects" loading="lazy" width="1440" height="900"></button><figcaption>Overview: milestones at risk and overdue tasks</figcaption></figure>
+                <figure class="reveal delay-3"><button class="shot" data-full="images/proj-projects.jpg?v=3" data-caption="Projects with status, priority, lead and due date"><img src="images/proj-projects.jpg?v=3" alt="Project list with status, priority, lead and due date" loading="lazy" width="1440" height="900"></button><figcaption>Projects with status, priority, lead and due date</figcaption></figure>
+                <figure class="reveal delay-4"><button class="shot" data-full="images/proj-milestones.jpg?v=3" data-caption="Milestones in delivery order"><img src="images/proj-milestones.jpg?v=3" alt="Milestones of a project with due date and progress" loading="lazy" width="1440" height="900"></button><figcaption>Milestones in delivery order</figcaption></figure>
             </div>
         </div>
     </section>
 
-    <section id="task" class="app-section alt">
+    <!-- NexusTask App Section -->
+    <section id="task" class="app-section">
         <div class="wrap">
-            <div class="section-head">
-                <img src="images/nexus-task-logo.svg" alt="" width="48" height="48">
+            <div class="section-head reveal">
+                <div class="app-icon-badge">
+                    <img src="images/nexus-task-logo.svg" alt="NexusTask Logo" width="40" height="40">
+                </div>
                 <div>
-                    <p class="eyebrow task-text">Task manager</p>
+                    <p class="eyebrow task-text">Fluid collaborative productivity</p>
                     <h2>Nexus<span class="task-text">Task</span></h2>
                     <p>Your tasks and your team's in one place: personal and team lists, boards, due dates and reminders. Tasks for a project are filed under it, and NexusProject sees their progress.</p>
                 </div>
             </div>
 
+            <!-- Interactive Spotlight Console with Delayed Entrance -->
+            <div class="console-box reveal delay-1">
+                <div class="console-grid">
+                    <div class="console-tabs" role="tablist" aria-label="NexusTask Interactive Previews">
+                        <button class="console-tab active" role="tab" aria-selected="true" data-shot="images/task-board.jpg?v=3" data-caption="A team list as a Kanban board with smooth drag and drop">
+                            <strong>Team Board &amp; Kanban</strong>
+                            <span>Drag tasks across status columns, with team permissions and instant sync.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/task-my-tasks.jpg?v=3" data-caption="My tasks: due groups, quick add and this week's wins">
+                            <strong>My Tasks &amp; Quick Add</strong>
+                            <span>Due groups (Overdue, Today, Upcoming) plus quick-add shortcut and this week's wins.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/task-detail.jpg?v=3" data-caption="A task: status, details and comments with mentions">
+                            <strong>Task Details &amp; Mentions</strong>
+                            <span>Rich comments with @mentions, activity log, attachments and follower notifications.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/task-today.jpg?v=3" data-caption="Today, with a progress ring">
+                            <strong>Today &amp; Progress Ring</strong>
+                            <span>Focused execution dashboard featuring an interactive progress ring for daily tasks.</span>
+                        </button>
+                        <button class="console-tab" role="tab" aria-selected="false" data-shot="images/task-calendar.jpg?v=3" data-caption="Calendar: drag a task to another day">
+                            <strong>Interactive Calendar</strong>
+                            <span>Month and week views with drag-and-drop rescheduling across working days.</span>
+                        </button>
+                    </div>
+
+                    <div class="console-preview-wrap">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="browser-url">task.nexus-suite.internal · board view</div>
+                            <div class="zoom-hint">Click to enlarge ⤢</div>
+                        </div>
+                        <div class="console-preview-screen">
+                            <button class="shot" data-full="images/task-board.jpg?v=3" data-caption="A team list as a Kanban board with smooth drag and drop" aria-label="Enlarge preview">
+                                <img class="console-preview-img" src="images/task-board.jpg?v=3" alt="A team list as a board" width="1440" height="900">
+                            </button>
+                        </div>
+                        <div class="console-preview-caption">
+                            <span class="console-preview-caption-text">A team list as a board</span>
+                            <span class="zoom-hint">Interactive Console</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid with Staggered Delays -->
             <div class="features">
-                <article>
+                <article class="feature-card reveal delay-1">
                     <h3>My tasks &amp; Today</h3>
                     <p>Tasks grouped by when they're due, a quick add, this week's done tasks, and a Today page with a progress ring where you tick tasks off.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-2">
                     <h3>Lists &amp; boards</h3>
                     <p>A personal list plus team lists you share. Drag tasks across the board's columns, or switch to a list with filters for status, person, priority and due date.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-3">
                     <h3>Company workflow</h3>
                     <p>Admins set the statuses every task moves through, in board order. Each task gets a number (T-12) that you can search for.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-4">
                     <h3>Project tasks</h3>
                     <p>File a task under a NexusProject project and milestone, and it's numbered by the project code (ENG-4). The project's team decides who can do what.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-1">
                     <h3>Calendar &amp; saved views</h3>
                     <p>A month and week calendar where you drag a task to another day. Search, then save a view so it stays in the sidebar.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-2">
                     <h3>Comments &amp; files</h3>
                     <p>Comments with @mentions, an activity history and attachments up to 10 MB. Files are stored outside the web root and shown only to people who can open the task.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-3">
                     <h3>Notifications</h3>
                     <p>Hub notifications when you're assigned or mentioned or a task you follow changes, plus 08:00 reminders for tasks due tomorrow or overdue.</p>
                 </article>
-                <article>
+                <article class="feature-card reveal delay-4">
                     <h3>On the Hub home page</h3>
                     <p>A My tasks card on NexusHub's home page asks NexusTask for your open tasks live, using a short-lived service token from the Hub.</p>
                 </article>
             </div>
 
+            <!-- All App Views Gallery -->
+            <div class="gallery-section-title reveal">
+                <h3>All NexusTask Views &amp; Workflows</h3>
+                <span class="gallery-count">7 screens</span>
+            </div>
             <div class="gallery">
-                <figure><button class="shot" data-full="images/task-board.jpg?v=3"><img src="images/task-board.jpg?v=3" alt="Team list shown as a board with status columns" loading="lazy" width="1440" height="900"></button><figcaption>A team list as a board</figcaption></figure>
-                <figure><button class="shot" data-full="images/task-my-tasks.jpg?v=3"><img src="images/task-my-tasks.jpg?v=3" alt="My tasks page with due groups and quick add" loading="lazy" width="1440" height="900"></button><figcaption>My tasks: due groups, quick add and this week's wins</figcaption></figure>
-                <figure><button class="shot" data-full="images/task-detail.jpg?v=3"><img src="images/task-detail.jpg?v=3" alt="Task page with description, status, comments and mentions" loading="lazy" width="1440" height="900"></button><figcaption>A task: status, details and comments with mentions</figcaption></figure>
-                <figure><button class="shot" data-full="images/task-today.jpg?v=3"><img src="images/task-today.jpg?v=3" alt="Today page with a progress ring" loading="lazy" width="1440" height="900"></button><figcaption>Today, with a progress ring</figcaption></figure>
-                <figure><button class="shot" data-full="images/task-projects.jpg?v=3"><img src="images/task-projects.jpg?v=3" alt="NexusProject projects with their task counts" loading="lazy" width="1440" height="900"></button><figcaption>NexusProject projects and their tasks</figcaption></figure>
-                <figure><button class="shot" data-full="images/task-lists.jpg?v=3"><img src="images/task-lists.jpg?v=3" alt="Personal and team lists" loading="lazy" width="1440" height="900"></button><figcaption>Personal and team lists</figcaption></figure>
-                <figure><button class="shot" data-full="images/task-calendar.jpg?v=3"><img src="images/task-calendar.jpg?v=3" alt="Month calendar of due tasks" loading="lazy" width="1440" height="900"></button><figcaption>Calendar: drag a task to another day</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/task-board.jpg?v=3" data-caption="A team list as a board"><img src="images/task-board.jpg?v=3" alt="Team list shown as a board with status columns" loading="lazy" width="1440" height="900"></button><figcaption>A team list as a board</figcaption></figure>
+                <figure class="reveal delay-2"><button class="shot" data-full="images/task-my-tasks.jpg?v=3" data-caption="My tasks: due groups, quick add and this week's wins"><img src="images/task-my-tasks.jpg?v=3" alt="My tasks page with due groups and quick add" loading="lazy" width="1440" height="900"></button><figcaption>My tasks: due groups, quick add and this week's wins</figcaption></figure>
+                <figure class="reveal delay-3"><button class="shot" data-full="images/task-detail.jpg?v=3" data-caption="A task: status, details and comments with mentions"><img src="images/task-detail.jpg?v=3" alt="Task page with description, status, comments and mentions" loading="lazy" width="1440" height="900"></button><figcaption>A task: status, details and comments with mentions</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/task-today.jpg?v=3" data-caption="Today, with a progress ring"><img src="images/task-today.jpg?v=3" alt="Today page with a progress ring" loading="lazy" width="1440" height="900"></button><figcaption>Today, with a progress ring</figcaption></figure>
+                <figure class="reveal delay-2"><button class="shot" data-full="images/task-projects.jpg?v=3" data-caption="NexusProject projects and their tasks"><img src="images/task-projects.jpg?v=3" alt="NexusProject projects with their task counts" loading="lazy" width="1440" height="900"></button><figcaption>NexusProject projects and their tasks</figcaption></figure>
+                <figure class="reveal delay-3"><button class="shot" data-full="images/task-lists.jpg?v=3" data-caption="Personal and team lists"><img src="images/task-lists.jpg?v=3" alt="Personal and team lists" loading="lazy" width="1440" height="900"></button><figcaption>Personal and team lists</figcaption></figure>
+                <figure class="reveal delay-1"><button class="shot" data-full="images/task-calendar.jpg?v=3" data-caption="Calendar: drag a task to another day"><img src="images/task-calendar.jpg?v=3" alt="Month calendar of due tasks" loading="lazy" width="1440" height="900"></button><figcaption>Calendar: drag a task to another day</figcaption></figure>
             </div>
         </div>
     </section>
 
+    <!-- Architecture Section -->
     <section id="connected" class="connected">
         <div class="wrap">
-            <p class="eyebrow">Architecture</p>
-            <h2>One hub, any number of apps</h2>
-            <p class="section-lead">Apps connect only to the Hub and never share secrets with each other. A shared client kit (a Symfony bundle) gives each new app all of this in an afternoon. NexusTask and NexusProject talk through it too: task events go out through the Hub, and service tokens let each read the other's API.</p>
-            <div class="arch">
-                <div class="arch-app hubbox">
-                    <img src="images/nexus-hub-logo.svg" alt="" width="36" height="36">
-                    <strong>NexusHub</strong>
-                    <span>Identity &amp; employee data</span>
-                </div>
-                <ul class="arch-links">
-                    <li><b>Sign-in</b> OpenID Connect with PKCE, two-factor and consent</li>
-                    <li><b>Sign-out everywhere</b> Back-channel logout tokens</li>
-                    <li><b>Employee sync</b> Directory API v1 plus signed webhooks with retries</li>
-                    <li><b>App-to-app calls</b> Short-lived service tokens issued by the Hub</li>
-                    <li><b>Events &amp; notifications</b> Apps publish through the Hub, which delivers them to other apps, the bell and email</li>
-                </ul>
-                <div class="arch-apps">
-                    <div class="arch-app invbox"><img src="images/nexus-inventory-icon.png" alt="" width="36" height="36"><strong>NexusInventory</strong><span>IT assets</span></div>
-                    <div class="arch-app projbox"><img src="images/nexus-project-logo.svg" alt="" width="36" height="36"><strong>NexusProject</strong><span>Projects &amp; milestones</span></div>
-                    <div class="arch-app taskbox"><img src="images/nexus-task-logo.svg" alt="" width="36" height="36"><strong>NexusTask</strong><span>Tasks &amp; boards</span></div>
-                    <div class="arch-app ghost"><strong>Your next app</strong><span>Plugs in with the client kit</span></div>
+            <p class="eyebrow hub-text reveal">System Architecture</p>
+            <h2 class="reveal delay-1">One hub, any number of apps</h2>
+            <p class="section-lead reveal delay-2">Apps connect only to the Hub and never share secrets with each other. A shared client kit (a Symfony bundle) gives each new app all of this in an afternoon. NexusTask and NexusProject talk through it too: task events go out through the Hub, and service tokens let each read the other's API.</p>
+            
+            <div class="arch-container reveal delay-3">
+                <div class="arch-grid">
+                    <div class="arch-app hubbox">
+                        <img src="images/nexus-hub-logo.svg" alt="NexusHub Logo" width="44" height="44">
+                        <strong class="hub-text">NexusHub</strong>
+                        <span>Identity &amp; employee data</span>
+                        <div style="margin-top: 8px; font-size: 0.72rem; padding: 2px 10px; border-radius: 999px; background: rgba(245, 158, 11, 0.2); color: #fcd34d;">OIDC Core Provider</div>
+                    </div>
+                    
+                    <ul class="arch-links">
+                        <li><b>Sign-in</b> OpenID Connect with PKCE, two-factor and consent</li>
+                        <li><b>Sign-out everywhere</b> Back-channel logout tokens</li>
+                        <li><b>Employee sync</b> Directory API v1 plus signed webhooks with retries</li>
+                        <li><b>App-to-app calls</b> Short-lived service tokens issued by the Hub</li>
+                        <li><b>Events &amp; notifications</b> Apps publish through the Hub, which delivers them to other apps, the bell and email</li>
+                    </ul>
+
+                    <div class="arch-apps">
+                        <div class="arch-app invbox"><img src="images/nexus-inventory-icon.png" alt="" width="32" height="32"><strong>NexusInventory</strong><span>IT assets</span></div>
+                        <div class="arch-app projbox"><img src="images/nexus-project-logo.svg" alt="" width="32" height="32"><strong>NexusProject</strong><span>Projects &amp; milestones</span></div>
+                        <div class="arch-app taskbox"><img src="images/nexus-task-logo.svg" alt="" width="32" height="32"><strong>NexusTask</strong><span>Tasks &amp; boards</span></div>
+                        <div class="arch-app ghost"><strong>Your next app</strong><span>Plugs in via client kit</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Technology & Engineering Rigor -->
     <section id="tech" class="tech">
         <div class="wrap tech-grid">
-            <div>
-                <p class="eyebrow">Built with</p>
+            <div class="reveal">
+                <p class="eyebrow hub-text">Engineering Foundation</p>
                 <h2>Boring tech, done carefully</h2>
+                <p style="color: var(--text-muted); margin-top: 12px; font-size: 1.05rem;">Proven, rock-solid technologies chosen for high reliability, long-term maintainability, and zero runtime surprises.</p>
                 <ul class="tags">
-                    <li>PHP 8.4</li><li>Symfony 7.4</li><li>MySQL 8.4</li><li>Doctrine</li><li>Twig</li><li>Tailwind CSS v4</li><li>Stimulus &amp; Turbo</li><li>league/oauth2-server</li><li>Symfony Messenger &amp; Scheduler</li><li>dompdf</li><li>libsodium</li><li>SortableJS</li><li>GitHub Actions</li>
+                    <li>PHP 8.4</li>
+                    <li>Symfony 7.4</li>
+                    <li>MySQL 8.4</li>
+                    <li>Doctrine</li>
+                    <li>Twig</li>
+                    <li>Tailwind CSS v4</li>
+                    <li>Stimulus &amp; Turbo</li>
+                    <li>league/oauth2-server</li>
+                    <li>Symfony Messenger &amp; Scheduler</li>
+                    <li>dompdf</li>
+                    <li>libsodium</li>
+                    <li>SortableJS</li>
+                    <li>GitHub Actions</li>
                 </ul>
             </div>
             <div>
-                <h3>Quality gates on every commit</h3>
-                <ul class="checks">
-                    <li>PHPStan level 8, with no baseline and no ignored errors</li>
-                    <li>PHPUnit integration and web tests against real MySQL</li>
-                    <li>PHP-CS-Fixer, linting and Doctrine schema checks</li>
-                    <li>Hand-written, reversible database migrations</li>
-                    <li>Contract tests: NexusProject checks itself against NexusTask's task event fixtures</li>
-                </ul>
-                <h3>Privacy &amp; security</h3>
-                <ul class="checks">
-                    <li>Privacy levels enforced in one place, with a log of every view of confidential data</li>
-                    <li>Secrets encrypted at rest, with key rotation</li>
-                    <li>Strict content security policy, CSRF protection, and login throttling and lockout</li>
-                    <li>Employees can download their own data, and accept versioned privacy notices</li>
-                    <li>Reviewed against OWASP ASVS level 2</li>
-                </ul>
+                <div class="tech-box reveal delay-1">
+                    <h3 style="color: #6ee7b7;">Quality gates on every commit</h3>
+                    <ul class="checks">
+                        <li>PHPStan level 8, with no baseline and no ignored errors</li>
+                        <li>PHPUnit integration and web tests against real MySQL</li>
+                        <li>PHP-CS-Fixer, linting and Doctrine schema checks</li>
+                        <li>Hand-written, reversible database migrations</li>
+                        <li>Contract tests: NexusProject checks itself against NexusTask's task event fixtures</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-box reveal delay-2">
+                    <h3 style="color: #7dd3fc;">Privacy &amp; security</h3>
+                    <ul class="checks">
+                        <li>Privacy levels enforced in one place, with a log of every view of confidential data</li>
+                        <li>Secrets encrypted at rest, with key rotation</li>
+                        <li>Strict content security policy, CSRF protection, and login throttling and lockout</li>
+                        <li>Employees can download their own data, and accept versioned privacy notices</li>
+                        <li>Reviewed against OWASP ASVS level 2</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact & Call to Action -->
     <section id="contact" class="contact">
-        <div class="wrap contact-inner">
+        <div class="wrap contact-inner reveal">
             <div>
+                <span class="eyebrow hub-text">Let's build together</span>
                 <h2>Need something like this for your company?</h2>
                 <p>I build and support web apps for HR, IT and operations teams, and I can adapt the Nexus suite to the way your company already works.</p>
             </div>
             <div class="contact-card">
                 <strong>Christian Sevilleno</strong>
                 <span>Freelance Software Developer</span>
-                <a href="mailto:christian.sevilleno@yahoo.com">christian.sevilleno@yahoo.com</a>
-                <a href="https://github.com/JettBreak">github.com/JettBreak</a>
+                <button id="copy-email-btn" class="contact-action-btn" data-email="christian.sevilleno@yahoo.com" aria-label="Copy Christian's email address">
+                    <span>christian.sevilleno@yahoo.com</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+                <a href="https://github.com/JettBreak" target="_blank" rel="noopener noreferrer" class="contact-action-btn">
+                    <span>github.com/JettBreak</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -340,12 +854,30 @@
 
 <footer class="wrap foot">
     <p>Screenshots show fictional sample data. © 2026 Christian Sevilleno.</p>
+    <p><a href="#" style="color: var(--hub);">Back to top ↑</a></p>
 </footer>
 
-<dialog id="lightbox" aria-label="Screenshot">
-    <button type="button" class="close" aria-label="Close">×</button>
-    <img alt="">
+<!-- Lightbox 2.0 with Full Keyboard & Navigation Support -->
+<dialog id="lightbox" aria-label="Screenshot zoom view">
+    <div class="lightbox-content">
+        <button id="lb-close" type="button" class="close" aria-label="Close dialog">×</button>
+        <div class="lightbox-img-wrap">
+            <img id="lb-img" alt="" src="">
+        </div>
+        <div class="lightbox-footer">
+            <button id="lb-prev" type="button" class="lightbox-nav-btn" aria-label="Previous image">‹</button>
+            <span id="lb-caption"></span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span id="lb-counter" style="font-family: monospace; font-size: 0.8rem; color: var(--text-dim);"></span>
+                <button id="lb-next" type="button" class="lightbox-nav-btn" aria-label="Next image">›</button>
+            </div>
+        </div>
+    </div>
 </dialog>
-<script src="script.js"></script>
+
+<!-- Clipboard Toast -->
+<div id="toast" class="toast" role="status" aria-live="polite">✓ Copied to clipboard!</div>
+
+<script src="script.js?v=7"></script>
 </body>
 </html>
