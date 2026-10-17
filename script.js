@@ -424,6 +424,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------
+    // 7b. Stop & Snap per Section: when scrolling settles near a section's
+    //     top, glide it into place under the nav. Long sections still scroll
+    //     freely in their middle, since only the area near each top snaps.
+    // -------------------------------------------------------------
+    if (lenis) {
+        const NAV_OFFSET = 80; // same offset the anchor links use
+        const SETTLE_MS = 140;
+        const snapSections = Array.from(document.querySelectorAll('main > section'));
+        let settleTimer = null;
+        let snapping = false;
+
+        const snapPoints = () => snapSections.map((section, i) =>
+            i === 0 ? 0 : Math.min(lenis.limit, Math.max(0, section.getBoundingClientRect().top + lenis.scroll - NAV_OFFSET)));
+
+        function snapToNearest() {
+            if (snapping || lenis.isStopped) return;
+            const current = lenis.scroll;
+            const reach = Math.min(window.innerHeight * 0.3, 320);
+            let best = null;
+            snapPoints().forEach((point) => {
+                const dist = Math.abs(point - current);
+                if (dist <= reach && (best === null || dist < Math.abs(best - current))) best = point;
+            });
+            // Nothing in reach, or already aligned
+            if (best === null || Math.abs(best - current) < 2) return;
+
+            snapping = true;
+            lenis.scrollTo(best, {
+                duration: 0.85,
+                easing: (t) => 1 - Math.pow(1 - t, 4),
+                onComplete: () => { snapping = false; },
+            });
+            // In case the glide is interrupted by a new wheel/touch gesture
+            setTimeout(() => { snapping = false; }, 1000);
+        }
+
+        lenis.on('scroll', () => {
+            if (snapping) return;
+            clearTimeout(settleTimer);
+            settleTimer = setTimeout(snapToNearest, SETTLE_MS);
+        });
+    }
+
+    // -------------------------------------------------------------
     // 8. Smooth Scroll Spy for Floating Top Nav & Vertical Dots (.....)
     // -------------------------------------------------------------
     const navLinks = document.querySelectorAll('.top nav a.nav-link');
