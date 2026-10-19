@@ -5,6 +5,24 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
+    // 0. Light / dark theme toggle
+    // -------------------------------------------------------------
+    const themeToggle = document.getElementById('theme-toggle');
+    const syncThemeLabel = () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+    };
+    if (themeToggle) {
+        syncThemeLabel();
+        themeToggle.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+            syncThemeLabel();
+        });
+    }
+
+    // -------------------------------------------------------------
     // 1. Lenis Smooth Momentum Inertia Scroll (Delayed Catch-up Physics)
     // -------------------------------------------------------------
     let lenis = null;
