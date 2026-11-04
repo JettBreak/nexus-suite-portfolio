@@ -497,6 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'inventory', element: document.getElementById('inventory') },
         { id: 'project', element: document.getElementById('project') },
         { id: 'task', element: document.getElementById('task') },
+        { id: 'attendance', element: document.getElementById('attendance') },
         { id: 'connected', element: document.getElementById('connected') },
         { id: 'tech', element: document.getElementById('tech') },
         { id: 'contact', element: document.getElementById('contact') },
